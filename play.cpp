@@ -1,8 +1,8 @@
-#include <vector>
+
 #include <algorithm>
 #include <iostream>
 
-#include "card.h"
+#include "player.h"
 
 void initDeck(std::vector<Card>& myDeck);
 void printDeck(std::vector<Card> deck);
