@@ -1,7 +1,6 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-#include <stack>
 
 #include "card.h"
 
