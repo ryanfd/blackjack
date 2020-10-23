@@ -7,16 +7,22 @@ void Player::calculateTotal()
         newTotal += hand[i].getVal();
     }
     total = newTotal;
+
+    // if over 21 and have an Ace, change Ace value to 1
+    int index = 0;
+    while (total > 21 && index < hand.size()) {
+        if (hand[index].getFaceVal() == "A") {
+            hand[index].setCardValue(1);
+            total -= 10;
+        }
+        index++;
+    }
 }
 
 void Player::playerTurn(std::vector<Card> deck)
 {
     // display hand
-    std::cout << "Cards: ";
-    for (int i=0; i<hand.size(); i++) {
-        std::cout << hand[i].getfaceVal() << "[" << hand[i].getSuit() << "]\t";
-    }
-    std::cout << std::endl;
+    displayHand();
 
     // player choice
     std::string input;
@@ -32,12 +38,21 @@ void Player::playerTurn(std::vector<Card> deck)
     }
 
     if (decision == "hit") {
-
+        chooseHit(deck);
     } else if (decision == "stay") {
-
+        chooseStay();
     } else {
         std::cout << "ERROR: INVALID ENTRY" << std::endl;
     }
+}
+
+void Player::displayHand()
+{
+    std::cout << "Cards: ";
+    for (int i=0; i<hand.size(); i++) {
+        std::cout << hand[i].getFaceVal() << "[" << hand[i].getSuit() << "]\t";
+    }
+    std::cout << std::endl;
 }
 
 // getters

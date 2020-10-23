@@ -7,7 +7,7 @@ public:
     { }
 
     // getters
-    std::string getfaceVal();
+    std::string getFaceVal();
     int getVal();
     std::string getSuit();
 

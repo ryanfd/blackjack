@@ -1,7 +1,7 @@
 #include "card.h"
 
 // getters
-std::string Card::getfaceVal() { return faceVal; }
+std::string Card::getFaceVal() { return faceVal; }
 int Card::getVal() { return val; }
 std::string Card::getSuit() { return suit; }
 

@@ -5,27 +5,35 @@
 
 void initDeck(std::vector<Card>& myDeck);
 void printDeck(std::vector<Card> deck);
+void dealCard(Player p, std::vector<Card>& myDeck);
 
 int main()
 {
+    Player player;
+
     std::vector<Card> deck;
     initDeck(deck);
 
     std::cout << "Deck Size: " << deck.size() << std::endl << std::endl;
-    printDeck(deck);
+    // printDeck(deck);
 
     // shuffle deck
     std::random_shuffle(deck.begin(), deck.end());
 
+    // std::cout << "Deck Size: " << deck.size() << std::endl << std::endl;
+    // printDeck(deck);
+
+    dealCard(player, deck);
+    dealCard(player, deck);
+    player.displayHand();
     std::cout << "Deck Size: " << deck.size() << std::endl << std::endl;
-    printDeck(deck);
 }
 
 void printDeck(std::vector<Card> deck)
 {
     int count = 0;
     for (int i=0; i<deck.size(); i++) {
-        std::cout << i+1 << ": [ Face: " << deck[i].getfaceVal() << " | Value: " << deck[i].getVal() << " | Suit: " << deck[i].getSuit() << " ]" << std::endl;
+        std::cout << i+1 << ": [ Face: " << deck[i].getFaceVal() << " | Value: " << deck[i].getVal() << " | Suit: " << deck[i].getSuit() << " ]" << std::endl;
         count++;
         if (count == 4)  {
             std::cout << std::endl;
@@ -74,4 +82,13 @@ void initDeck(std::vector<Card>& myDeck)
             myDeck.push_back(Card(currFaceVal, val, currSuit));
         }
     }
+}
+
+void dealCard(Player p, std::vector<Card>& myDeck)
+{
+    Card tempCard = myDeck[myDeck.size()-1];
+    std::cout << tempCard.getFaceVal() << std::endl;
+    p.getHand().push_back(Card(tempCard.getFaceVal(), tempCard.getVal(), tempCard.getSuit()));
+    std::cout << p.getHand().size();
+    myDeck.pop_back();
 }
