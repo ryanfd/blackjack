@@ -1,2 +1,2 @@
 all:
-	g++ -g -o blackjack card.cpp play.cpp
+	g++ -g -o blackjack card.cpp play.cpp player.cpp
